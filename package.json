@@ -1,0 +1,31 @@
+{
+  "name": "symplectic-import",
+  "description": "A Symplectic import script",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Coenego/symplectic-import",
+  "author": {
+    "name": "Mathieu Decoene",
+    "email": "md623@cam.ac.uk"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Coenego/symplectic-import.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Coenego/symplectic-import/issues"
+  },
+  "bin": {
+    "symplectic-import": "./bin/import.js"
+  },
+  "dependencies": {
+    "underscore": "latest"
+  },
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-release": "~0.7.0"
+  },
+  "engines": {
+    "node": ">=0.8"
+  }
+}
