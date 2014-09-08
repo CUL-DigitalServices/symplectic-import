@@ -19,10 +19,12 @@
     "symplectic-import": "./bin/import.js"
   },
   "dependencies": {
+    "colors": "latest",
     "q": "latest",
     "request": "latest",
     "underscore": "latest",
-    "xml2js": "latest"
+    "xml2js": "latest",
+    "yargs": "latest"
   },
   "devDependencies": {
     "grunt": "latest",
