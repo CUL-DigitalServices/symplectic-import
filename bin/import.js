@@ -5,11 +5,54 @@ var q = require('q');
 var request = require('request');
 var util = require('util');
 var xml2js = require('xml2js');
+var yargs = require('yargs');
 
+var Constants = require('../lib/constants').Constants;
 var SymplecticPublication = require('../lib/model').SymplecticPublication;
 
-var URI = 'https://ref.cam.ac.uk:8091/publications-api/v4.6/';
-var endpoint = '';
+var argv = yargs
+    .usage('Usage: ./bin/import.js [--groups] [--created-since] [--ever-approved]')
+
+    .alias('-g', 'groups')
+    .describe('-g', 'The group where the publications belong to')
+
+    .alias('-c', 'created-since')
+    .describe('-c', 'The insertion start date of the publications (e.g. 2014-09-01')
+
+    .alias('-e')
+    .describe('-e', 'Whether the publications need to be approved or not (default: true).')
+
+    .argv;
+
+/**
+ * Constructs a query string based on the command line parameters
+ *
+ * @return {String}     The created query string
+ */
+var constructQueryString = function() {
+    var queryString = ['detail=full'];
+
+    if (argv.g) {
+        queryString.push(util.format('groups=%s', argv.g));
+    }
+
+    if (argv.c) {
+        if (argv.c.length !== 10) {
+            return console.log('Invalid value for \'created-since\'');
+        }
+        queryString.push(util.format('created-since=%sT00%3A00%3A00%2B01%3A00', argv.c))
+    }
+
+    var everApproved = true;
+    if (argv.e && argv.e !== 'true') {
+        if (argv.e !== 'false') {
+            return console.log('Invalid value for \'ever-approved\'');
+        }
+        everApproved = false;
+    }
+    queryString.push(util.format('ever-approved=%s', everApproved));
+    return util.format('%s?%s', Constants.API.URI, queryString.sort().join('&'));
+};
 
 /**
  * Perform a request to the Symplectic API
@@ -17,9 +60,10 @@ var endpoint = '';
  * @api private
  */
 var doAPIRequest = function() {
+    var url = constructQueryString();
 
     // Send a request to the Symplectic API
-    request({'url': util.format('%s%s', URI, endpoint)}, function(err, response) {
+    request({'url': url}, function(err, response) {
         if (err) {
             console.log(err);
         }
@@ -30,6 +74,7 @@ var doAPIRequest = function() {
             // Parse the results
             .then(parseResults)
 
+            // Errorhandler
             .catch(function(err) {
                 console.log(err);
             });
