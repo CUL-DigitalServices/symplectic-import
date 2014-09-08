@@ -19,6 +19,7 @@
     "symplectic-import": "./bin/import.js"
   },
   "dependencies": {
+    "colors": "latest",
     "q": "latest",
     "request": "latest",
     "underscore": "latest",
