@@ -10,7 +10,6 @@ Run the script
 ===========================
 
 ```
-~$ ./bin/import.js --help
 Usage: ./bin/import.js --target-file [--groups] [--created-since] [--ever-approved]
 
 Options:
