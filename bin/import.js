@@ -33,13 +33,13 @@ var init = function() {
 
     // Check if the parameter has been set
     if (!argv.t) {
-        console.log('Location for exported file missing'.red);
+        console.error('Location for exported file missing'.red);
         process.exit(0);
     }
 
     // Check if the specified location exists
     if (!fs.existsSync(argv.t)) {
-        console.log('Invalid export location'.red);
+        console.error('Invalid export location'.red);
         process.exit(0);
     }
 
@@ -51,7 +51,7 @@ var init = function() {
 
         // Errorhandler
         .catch(function(err) {
-            console.log(err);
+            console.error(err.red);
         });
 };
 
@@ -87,7 +87,7 @@ var constructQueryString = function() {
     var errors = [];
 
     // Caches the query string parameters
-    var queryString = ['detail=full'];
+    var queryString = ['detail=full', 'per-page=25'];
 
     if (argv.g) {
         queryString.push(util.format('groups=%s', argv.g));
@@ -111,7 +111,7 @@ var constructQueryString = function() {
 
     // Stop the progress if any errors occurred
     if (errors.length) {
-        console.log(errors[0].red);
+        console.error(errors[0].red);
         process.exit(1);
     }
 
