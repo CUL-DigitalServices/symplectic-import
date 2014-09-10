@@ -24,6 +24,7 @@
     "colors": "latest",
     "progress": "latest",
     "q": "latest",
+    "querystring": "latest",
     "request": "latest",
     "underscore": "latest",
     "xml2js": "latest",
