@@ -3,12 +3,15 @@
 var _ = require('underscore');
 var colors = require('colors');
 var fs = require('fs');
+var progress = require('progress');
 var q = require('q');
 var util = require('util');
 var yargs = require('yargs');
 
 var API = require('../lib/api');
 var Constants = require('../lib/constants').Constants;
+
+var progressBar = null;
 
 var argv = yargs
     .usage('Usage: ./bin/import.js --target-file [--groups] [--created-since] [--ever-approved]')
@@ -28,6 +31,8 @@ var argv = yargs
 
 /**
  * Initialize the script
+ *
+ * @api private
  */
 var init = function() {
 
@@ -43,45 +48,30 @@ var init = function() {
         process.exit(0);
     }
 
+    // Create a progress bar
+    progressBar = new progress('importing [:bar] :percent', {'incomplete': ' ', 'total': 100, 'width': 50});
+
     // Perform the API request
     API.getPublications(constructQueryString())
+
+        // Progress handler
+        .progress(progressHandler)
 
         // Export the results
         .then(exportResults)
 
         // Errorhandler
-        .catch(function(err) {
+        .fail(function(err) {
             console.error(err.red);
+            process.exit(2);
         });
-};
-
-/**
- * Exports the results to a JSON-file
- *
- * @param {Publication[]}   publications    A collection of publications
- * @return {Promise}
- * @api private
- */
-var exportResults = function(publications) {
-    var deferred = q.defer();
-
-    var fileName = util.format('%s/publications.json', argv.t);
-    fs.writeFile(fileName, JSON.stringify(publications, null, 4), 'utf8', function(err) {
-        if (err) {
-            return deferred.reject('Error while exporting publications');
-        }
-
-        console.log(util.format('publications exported at %s', fileName).green);
-        deferred.resolve();
-    });
-
-    return deferred.promise;
 };
 
 /**
  * Constructs a query string based on the command line parameters
  *
  * @return {String[]}   Collection of query string parameters
+ * @api private
  */
 var constructQueryString = function() {
     var errors = [];
@@ -112,11 +102,47 @@ var constructQueryString = function() {
 
     // Stop the progress if any errors occurred
     if (errors.length) {
-        console.error(errors[0].red);
+        console.error('\n' + errors[0].red);
         process.exit(1);
     }
 
     return queryString;
+};
+
+/**
+ * Exports the results to a JSON-file
+ *
+ * * deferred.reject    {String}    Error message
+ * * deferred.resolve   {Object}    Object containing the XML datanull
+ *
+ * @param  {Publication[]}  publications    A collection of publications
+ * @return {Promise}
+ * @api private
+ */
+var exportResults = function(publications) {
+    var deferred = q.defer();
+
+    var fileName = util.format('%s/publications.json', argv.t);
+    fs.writeFile(fileName, JSON.stringify(publications, null, 4), 'utf8', function(err) {
+        if (err) {
+            return deferred.reject('Error while exporting publications');
+        }
+
+        console.log(util.format('\npublications exported at %s', fileName).green);
+        process.exit(4);
+    });
+
+    return deferred.promise;
+};
+
+/**
+ * Handle the progress of requesting the publications
+ *
+ * @param  {Number}     val     The value that needs to be added to the progress bar
+ * @api private
+ */
+var progressHandler = function(val) {
+    progressBar.tick(val);
 };
 
 init();

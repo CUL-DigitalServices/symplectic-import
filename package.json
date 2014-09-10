@@ -3,10 +3,12 @@
   "description": "A Symplectic import script",
   "version": "0.1.0",
   "homepage": "https://github.com/Coenego/symplectic-import",
-  "author": {
-    "name": "Mathieu Decoene",
-    "email": "md623@cam.ac.uk"
-  },
+  "author": "Mathieu Decoene <md623@cam.ac.uk>",
+  "keywords": [
+    "import",
+    "symplectic",
+    "publications"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -20,6 +22,7 @@
   },
   "dependencies": {
     "colors": "latest",
+    "progress": "latest",
     "q": "latest",
     "request": "latest",
     "underscore": "latest",
