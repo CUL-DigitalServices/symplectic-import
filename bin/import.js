@@ -52,7 +52,7 @@ var init = function() {
     progressBar = new progress('importing [:bar] :percent', {'incomplete': ' ', 'total': 100, 'width': 50});
 
     // Perform the API request
-    API.getPublications(constructQueryString())
+    API.getPublications(constructRequestOptions())
 
         // Progress handler
         .progress(progressHandler)
@@ -68,37 +68,38 @@ var init = function() {
 };
 
 /**
- * Constructs a query string based on the command line parameters
+ * Constructs a request options object based on the command line parameters
  *
- * @return {String[]}   Collection of query string parameters
+ * @return {Object}     Object containing request parameters
  * @api private
  */
-var constructQueryString = function() {
+var constructRequestOptions = function() {
     var errors = [];
 
-    // Caches the query string parameters
-    var itemsPerPage = util.format('per-page=%s', Constants.API['items-per-page'])
-    var queryString = ['detail=full', itemsPerPage];
+    // Request options object
+    var opts = {
+        'detail': 'full',
+        'ever-approved': true,
+        'per-page': Constants.API['items-per-page']
+    };
 
     if (argv.g) {
-        queryString.push(util.format('groups=%s', argv.g));
+        opts['groups'] = argv.g;
     }
 
     if (argv.c) {
         if (argv.c.length !== 10) {
             errors.push('Invalid value for \'created-since\'');
         }
-        queryString.push(util.format('created-since=%sT00%3A00%3A00%2B01%3A00', argv.c))
+        opts['created-since'] = util.format('%sT00:00:00+01:00', argv.c);
     }
 
-    var everApproved = true;
     if (argv.e && argv.e !== 'true') {
         if (argv.e !== 'false') {
             errors.push('Invalid value for \'ever-approved\'');
         }
-        everApproved = false;
+        opts['ever-approved'] = false;
     }
-    queryString.push(util.format('ever-approved=%s', everApproved));
 
     // Stop the progress if any errors occurred
     if (errors.length) {
@@ -106,7 +107,7 @@ var constructQueryString = function() {
         process.exit(1);
     }
 
-    return queryString;
+    return opts;
 };
 
 /**
