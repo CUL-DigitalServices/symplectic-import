@@ -14,19 +14,22 @@ var Constants = require('../lib/constants').Constants;
 var progressBar = null;
 
 var argv = yargs
-    .usage('Usage: ./bin/import.js --target-file [--groups] [--created-since] [--ever-approved]')
+    .usage('Usage: ./bin/import.js --location [--created-since] [--ever-approved] [--groups] ["--content-types"]')
 
-    .alias('-t')
-    .describe('-t', 'The directory where the file will be exported to (e.g. ~/Documents)')
-
-    .alias('-g', 'groups')
-    .describe('-g', 'The group where the publications belong to')
+    .alias('-l')
+    .describe('-l', 'The physical location where the file will be exported to (e.g. ~/Documents)')
 
     .alias('-c', 'created-since')
     .describe('-c', 'The insertion start date of the publications (e.g. 2014-09-01')
 
     .alias('-e', 'ever-approved')
     .describe('-e', 'Whether the publications need to be approved or not (default: true)')
+
+    .alias('-g', 'groups')
+    .describe('-g', 'The group where the publications belong to (e.g. 180)')
+
+    .alias('-t', 'content-types')
+    .describe('-t', 'The content type of the resources to fetch (e.g. "journal article, book")')
     .argv;
 
 /**
@@ -37,13 +40,13 @@ var argv = yargs
 var init = function() {
 
     // Check if the parameter has been set
-    if (!argv.t) {
+    if (!argv.l) {
         console.error('Location for exported file missing'.red);
         process.exit(0);
     }
 
     // Check if the specified location exists
-    if (!fs.existsSync(argv.t)) {
+    if (!fs.existsSync(argv.l)) {
         console.error('Invalid export location'.red);
         process.exit(0);
     }
@@ -52,7 +55,8 @@ var init = function() {
     progressBar = new progress('importing [:bar] :percent', {'incomplete': ' ', 'total': 100, 'width': 50});
 
     // Perform the API request
-    API.getPublications(constructRequestOptions())
+    var opts = constructRequestOptions();
+    API.getPublications(opts)
 
         // Progress handler
         .progress(progressHandler)
@@ -83,10 +87,6 @@ var constructRequestOptions = function() {
         'per-page': Constants.API['items-per-page']
     };
 
-    if (argv.g) {
-        opts['groups'] = argv.g;
-    }
-
     if (argv.c) {
         if (argv.c.length !== 10) {
             errors.push('Invalid value for \'created-since\'');
@@ -99,6 +99,14 @@ var constructRequestOptions = function() {
             errors.push('Invalid value for \'ever-approved\'');
         }
         opts['ever-approved'] = false;
+    }
+
+    if (argv.g) {
+        opts['groups'] = argv.g;
+    }
+
+    if (argv.t) {
+        opts['content-types'] = argv.t;
     }
 
     // Stop the progress if any errors occurred
@@ -123,9 +131,10 @@ var constructRequestOptions = function() {
 var exportResults = function(publications) {
     var deferred = q.defer();
 
-    var fileName = util.format('%s/publications.json', argv.t);
+    var fileName = util.format('%s/publications.json', argv.l);
     fs.writeFile(fileName, JSON.stringify(publications, null, 4), 'utf8', function(err) {
         if (err) {
+            console.log(err);
             return deferred.reject('Error while exporting publications');
         }
 
