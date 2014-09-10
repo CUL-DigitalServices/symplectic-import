@@ -44,7 +44,7 @@ var init = function() {
     }
 
     // Perform the API request
-    API.doRequest(constructQueryString())
+    API.getPublications(constructQueryString())
 
         // Export the results
         .then(exportResults)
@@ -81,13 +81,14 @@ var exportResults = function(publications) {
 /**
  * Constructs a query string based on the command line parameters
  *
- * @return {String}     The created query string
+ * @return {String[]}   Collection of query string parameters
  */
 var constructQueryString = function() {
     var errors = [];
 
     // Caches the query string parameters
-    var queryString = ['detail=full', 'per-page=25'];
+    var itemsPerPage = util.format('per-page=%s', Constants.API['items-per-page'])
+    var queryString = ['detail=full', itemsPerPage];
 
     if (argv.g) {
         queryString.push(util.format('groups=%s', argv.g));
@@ -115,8 +116,7 @@ var constructQueryString = function() {
         process.exit(1);
     }
 
-    // Return the created query string
-    return util.format('%s?%s', Constants.API.URI, queryString.sort().join('&'));
+    return queryString;
 };
 
 init();
