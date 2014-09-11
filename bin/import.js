@@ -134,7 +134,7 @@ var exportResults = function(publications) {
     var fileName = util.format('%s/publications.json', argv.l);
     fs.writeFile(fileName, JSON.stringify(publications, null, 4), 'utf8', function(err) {
         if (err) {
-            console.log(err);
+            console.log(err.red);
             return deferred.reject('Error while exporting publications');
         }
 
