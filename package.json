@@ -21,7 +21,9 @@
     "symplectic-import": "./bin/import.js"
   },
   "dependencies": {
+    "assert": "latest",
     "colors": "latest",
+    "nock": "latest",
     "progress": "latest",
     "q": "latest",
     "querystring": "latest",
@@ -31,10 +33,12 @@
     "yargs": "latest"
   },
   "devDependencies": {
-    "grunt": "latest",
-    "grunt-release": "~0.7.0"
+    "mocha": "latest"
   },
   "engines": {
-    "node": ">=0.8"
+    "node": ">=0.10"
+  },
+  "scripts": {
+    "test": "mocha"
   }
 }
