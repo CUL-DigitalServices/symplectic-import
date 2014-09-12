@@ -39,6 +39,7 @@
     "node": ">=0.10"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "npm run test-node",
+    "test-node": "mocha ./tests/import.js"
   }
 }

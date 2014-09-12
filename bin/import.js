@@ -111,7 +111,7 @@ var constructRequestOptions = function() {
 
     // Stop the progress if any errors occurred
     if (errors.length) {
-        console.error('\n' + errors[0].red);
+        console.error(errors[0].red);
         process.exit(1);
     }
 
@@ -131,14 +131,19 @@ var constructRequestOptions = function() {
 var exportResults = function(publications) {
     var deferred = q.defer();
 
+    if (!publications.length) {
+        console.log('No publications found'.green);
+        return deferred.resolve();
+    }
+
     var fileName = util.format('%s/publications.json', argv.l);
     fs.writeFile(fileName, JSON.stringify(publications, null, 4), 'utf8', function(err) {
         if (err) {
-            console.log(err.red);
+            console.error(err.red);
             return deferred.reject('Error while exporting publications');
         }
 
-        console.log(util.format('\npublications exported at %s', fileName).green);
+        console.log(util.format('publications exported at %s', fileName).green);
         process.exit(4);
     });
 

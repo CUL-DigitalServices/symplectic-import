@@ -24,6 +24,4 @@ Options:
 Run the tests
 ===========================
 
-```
-mocha tests/import.js
-```
+`npm test`
