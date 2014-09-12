@@ -8812,7 +8812,7 @@
     <category scheme="http://www.symplectic.co.uk/publications/atom/entries/" term="item" label="Item"/>
     <updated>2014-09-08T14:10:09.803+01:00</updated>
     <link type="application/atom+xml" rel="alternate" href="https://ref.cam.ac.uk:8091/publications-api/v4.6/publications/113914"/>
-    <title>SPIDER: a new balloon-borne experiment to measure CMB polarization on large angular scales - art. no. 62670R</title>
+    <title>Lorem ipsum dolor sit amet</title>
     <content type="xhtml">
         <div xmlns="http://www.w3.org/1999/xhtml">
         <p>Publication (conference)</p>
@@ -8825,130 +8825,14 @@
     <api:ever-approved>true</api:ever-approved>
     <api:reporting-date-1>2006-01-01</api:reporting-date-1>
     <api:records>
-        <api:record format="native" source-id="3" source-name="wos" source-display-name="Web of Science" id-at-source="WOS:000240018600026">
+        <api:record format="native" source-id="5" source-name="arxiv" source-display-name="arXiv" id-at-source="arxiv:000240018600026">
             <api:citation-count>5</api:citation-count>
             <api:native>
                 <api:field name="authors" type="person-list" display-name="Authors">
                     <api:people>
                         <api:person>
-                            <api:last-name>Montroy</api:last-name>
-                            <api:initials>TE</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Ade</api:last-name>
-                            <api:initials>PAR</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Bihary</api:last-name>
-                            <api:initials>R</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Bock</api:last-name>
-                            <api:initials>JJ</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Bond</api:last-name>
-                            <api:initials>JR</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Brevik</api:last-name>
+                            <api:last-name>Doe</api:last-name>
                             <api:initials>J</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Contaldi</api:last-name>
-                            <api:initials>CR</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Crill</api:last-name>
-                            <api:initials>BP</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Crites</api:last-name>
-                            <api:initials>A</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Dore</api:last-name>
-                            <api:initials>O</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Duband</api:last-name>
-                            <api:initials>L</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Golwala</api:last-name>
-                            <api:initials>SR</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Halpern</api:last-name>
-                            <api:initials>M</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Hilton</api:last-name>
-                            <api:initials>G</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Holmes</api:last-name>
-                            <api:initials>W</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Hristov</api:last-name>
-                            <api:initials>VV</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Irwin</api:last-name>
-                            <api:initials>K</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Jones</api:last-name>
-                            <api:initials>WC</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Kuo</api:last-name>
-                            <api:initials>CL</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Lange</api:last-name>
-                            <api:initials>AE</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>MacTavish</api:last-name>
-                            <api:initials>CJ</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Mason</api:last-name>
-                            <api:initials>P</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Mulder</api:last-name>
-                            <api:initials>J</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Netterfield</api:last-name>
-                            <api:initials>CB</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Pascale</api:last-name>
-                            <api:initials>E</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Ruhl</api:last-name>
-                            <api:initials>JE</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Trangsrud</api:last-name>
-                            <api:initials>A</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Tucker</api:last-name>
-                            <api:initials>C</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Turner</api:last-name>
-                            <api:initials>A</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Viero</api:last-name>
-                            <api:initials>M</api:initials>
                         </api:person>
                     </api:people>
                 </api:field>
@@ -8962,8 +8846,8 @@
                 <api:field name="editors" type="person-list" display-name="Editors">
                     <api:people>
                         <api:person>
-                            <api:last-name>Stepp</api:last-name>
-                            <api:initials>LM</api:initials>
+                            <api:last-name>Bar</api:last-name>
+                            <api:initials>F</api:initials>
                         </api:person>
                     </api:people>
                 </api:field>
@@ -8974,28 +8858,12 @@
                     </api:links>
                 </api:field>
                 <api:field name="journal" type="text" display-name="Published proceedings">
-                    <api:text>Ground-based and Airborne Telescopes, Pts 1 and 2</api:text>
+                    <api:text>Lorem ipsum dolor sit amet</api:text>
                 </api:field>
                 <api:field name="keywords" type="keyword-list" display-name="Keywords">
                     <api:keywords>
-                        <api:keyword>radio telescopes</api:keyword>
-                        <api:keyword>scientific ballooning</api:keyword>
-                        <api:keyword>Cosmic Microwave Background Radiation</api:keyword>
-                        <api:keyword>bolometer</api:keyword>
-                        <api:keyword>polarimetry</api:keyword>
-                        <api:keyword>focal plane arrays</api:keyword>
-                        <api:keyword>SQUID</api:keyword>
-                        <api:keyword>half-wave plate</api:keyword>
-                        <api:keyword>MICROWAVE BACKGROUND-RADIATION</api:keyword>
-                        <api:keyword>STRONG ELECTROTHERMAL FEEDBACK</api:keyword>
-                        <api:keyword>TRANSITION-EDGE SENSORS</api:keyword>
-                        <api:keyword>BOLOMETER</api:keyword>
-                        <api:keyword>MULTIPLEXER</api:keyword>
-                        <api:keyword>SPECTRUM</api:keyword>
-                        <api:keyword>ANISOTROPIES</api:keyword>
-                        <api:keyword>POLARIMETER</api:keyword>
-                        <api:keyword>TEMPERATURE</api:keyword>
-                        <api:keyword>RESOLUTION</api:keyword>
+                        <api:keyword>foo</api:keyword>
+                        <api:keyword>bar</api:keyword>
                     </api:keywords>
                 </api:field>
                 <api:field name="number" type="text" display-name="Chapter or section number">
@@ -9013,7 +8881,7 @@
                     </api:date>
                 </api:field>
                 <api:field name="title" type="text" display-name="Title">
-                    <api:text>SPIDER: a new balloon-borne experiment to measure CMB polarization on large angular scales - art. no. 62670R</api:text>
+                    <api:text>Lorem ipsum dolor sit amet</api:text>
                 </api:field>
                 <api:field name="volume" type="text" display-name="Volume">
                     <api:text>6267</api:text>
@@ -9026,129 +8894,13 @@
                 <api:field name="authors" type="person-list" display-name="Authors">
                     <api:people>
                         <api:person>
-                            <api:last-name>Montroy</api:last-name>
-                            <api:initials>TE</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Ade</api:last-name>
-                            <api:initials>PAR</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Bihary</api:last-name>
-                            <api:initials>R</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Bock</api:last-name>
-                            <api:initials>JJ</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Bond</api:last-name>
-                            <api:initials>JR</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Brevik</api:last-name>
+                            <api:last-name>Doe</api:last-name>
                             <api:initials>J</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Contaldi</api:last-name>
-                            <api:initials>CR</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Crill</api:last-name>
-                            <api:initials>BP</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Crites</api:last-name>
-                            <api:initials>A</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Dore</api:last-name>
-                            <api:initials>O</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Duband</api:last-name>
-                            <api:initials>L</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Golwala</api:last-name>
-                            <api:initials>SR</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Halpern</api:last-name>
-                            <api:initials>M</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Hilton</api:last-name>
-                            <api:initials>G</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Holmes</api:last-name>
-                            <api:initials>W</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Hristov</api:last-name>
-                            <api:initials>VV</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Irwin</api:last-name>
-                            <api:initials>K</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Jones</api:last-name>
-                            <api:initials>WC</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Kuo</api:last-name>
-                            <api:initials>CL</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Lange</api:last-name>
-                            <api:initials>AE</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>MacTavish</api:last-name>
-                            <api:initials>CJ</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Mason</api:last-name>
-                            <api:initials>P</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Mulder</api:last-name>
-                            <api:initials>J</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Netterfield</api:last-name>
-                            <api:initials>CB</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Pascale</api:last-name>
-                            <api:initials>E</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Ruhl</api:last-name>
-                            <api:initials>JE</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Trangsrud</api:last-name>
-                            <api:initials>A</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Tucker</api:last-name>
-                            <api:initials>C</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Turner</api:last-name>
-                            <api:initials>A</api:initials>
-                        </api:person>
-                        <api:person>
-                            <api:last-name>Viero</api:last-name>
-                            <api:initials>M</api:initials>
                         </api:person>
                     </api:people>
                 </api:field>
                 <api:field name="author-url" type="text" display-name="Author URL">
-                    <api:text>http://gateway.webofknowledge.com/gateway/Gateway.cgi?GWVersion=2&amp;SrcApp=PARTNER_APP&amp;SrcAuth=LinksAMR&amp;KeyUT=000240018600026&amp;DestLinkType=FullRecord&amp;DestApp=ALL_WOS&amp;UsrCustomerID=940c5db9f6a527ba8e12659dac275555</api:text>
+                    <api:text>http://lore.ipsum.com</api:text>
                 </api:field>
                 <api:field name="doi" type="text" display-name="DOI">
                     <api:text>10.1117/12.670339</api:text>
@@ -9172,18 +8924,12 @@
                     </api:links>
                 </api:field>
                 <api:field name="journal" type="text" display-name="Published proceedings">
-                    <api:text>Ground-based and Airborne Telescopes, Pts 1 and 2</api:text>
+                    <api:text>Lorem ipsum dolor sit amet</api:text>
                 </api:field>
                 <api:field name="keywords" type="keyword-list" display-name="Keywords">
                     <api:keywords>
-                        <api:keyword>radio telescopes</api:keyword>
-                        <api:keyword>scientific ballooning</api:keyword>
-                        <api:keyword>Cosmic Microwave Background Radiation</api:keyword>
-                        <api:keyword>bolometer</api:keyword>
-                        <api:keyword>polarimetry</api:keyword>
-                        <api:keyword>focal plane arrays</api:keyword>
-                        <api:keyword>SQUID</api:keyword>
-                        <api:keyword>half-wave plate</api:keyword>
+                        <api:keyword>foo</api:keyword>
+                        <api:keyword>bar</api:keyword>
                     </api:keywords>
                 </api:field>
                 <api:field name="number" type="text" display-name="Chapter or section number">
@@ -9204,7 +8950,7 @@
                     <api:text>Published</api:text>
                 </api:field>
                 <api:field name="title" type="text" display-name="Title">
-                    <api:text>SPIDER: a new balloon-borne experiment to measure CMB polarization on large angular scales - art. no. 62670R</api:text>
+                    <api:text>Lorem ipsum dolor sit amet</api:text>
                 </api:field>
                 <api:field name="volume" type="text" display-name="Volume">
                     <api:text>6267</api:text>
@@ -9215,41 +8961,17 @@
     <api:fields/>
     <api:all-labels type="keyword-list">
         <api:keywords>
-            <api:keyword origin="record-data" source="wos">radio telescopes</api:keyword>
-            <api:keyword origin="record-data" source="wos">scientific ballooning</api:keyword>
-            <api:keyword origin="record-data" source="wos">Cosmic Microwave Background Radiation</api:keyword>
-            <api:keyword origin="record-data" source="wos">bolometer</api:keyword>
-            <api:keyword origin="record-data" source="wos">polarimetry</api:keyword>
-            <api:keyword origin="record-data" source="wos">focal plane arrays</api:keyword>
-            <api:keyword origin="record-data" source="wos">SQUID</api:keyword>
-            <api:keyword origin="record-data" source="wos">half-wave plate</api:keyword>
-            <api:keyword origin="record-data" source="wos">MICROWAVE BACKGROUND-RADIATION</api:keyword>
-            <api:keyword origin="record-data" source="wos">STRONG ELECTROTHERMAL FEEDBACK</api:keyword>
-            <api:keyword origin="record-data" source="wos">TRANSITION-EDGE SENSORS</api:keyword>
-            <api:keyword origin="record-data" source="wos">BOLOMETER</api:keyword>
-            <api:keyword origin="record-data" source="wos">MULTIPLEXER</api:keyword>
-            <api:keyword origin="record-data" source="wos">SPECTRUM</api:keyword>
-            <api:keyword origin="record-data" source="wos">ANISOTROPIES</api:keyword>
-            <api:keyword origin="record-data" source="wos">POLARIMETER</api:keyword>
-            <api:keyword origin="record-data" source="wos">TEMPERATURE</api:keyword>
-            <api:keyword origin="record-data" source="wos">RESOLUTION</api:keyword>
-            <api:keyword origin="record-data" source="wos-lite">radio telescopes</api:keyword>
-            <api:keyword origin="record-data" source="wos-lite">scientific ballooning</api:keyword>
-            <api:keyword origin="record-data" source="wos-lite">Cosmic Microwave Background Radiation</api:keyword>
-            <api:keyword origin="record-data" source="wos-lite">bolometer</api:keyword>
-            <api:keyword origin="record-data" source="wos-lite">polarimetry</api:keyword>
-            <api:keyword origin="record-data" source="wos-lite">focal plane arrays</api:keyword>
-            <api:keyword origin="record-data" source="wos-lite">SQUID</api:keyword>
-            <api:keyword origin="record-data" source="wos-lite">half-wave plate</api:keyword>
+            <api:keyword origin="record-data" source="wos">foo</api:keyword>
+            <api:keyword origin="record-data" source="wos">bar</api:keyword>
         </api:keywords>
     </api:all-labels>
     <api:journal issn="0277-786X" href="https://ref.cam.ac.uk:8091/publications-api/v4.6/journals/0277-786X">
     <api:records>
         <api:record source-name="snip">
-            <api:title>Proceedings of SPIE - The International Society for Optical Engineering</api:title>
+            <api:title>Lorem ipsum dolor sit amet</api:title>
         </api:record>
         <api:record source-name="sjr">
-            <api:title>Proceedings of SPIE - The International Society for Optical Engineering</api:title>
+            <api:title>Lorem ipsum dolor sit amet</api:title>
         </api:record>
     </api:records>
 </api:journal>

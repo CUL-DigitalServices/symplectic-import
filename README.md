@@ -20,3 +20,10 @@ Options:
   -g, --groups          The group where the publications belong to (e.g. 432)
   -t  --content-type    The content type of the resources to fetch (e.g. "journal article, book")
 ```
+
+Run the tests
+===========================
+
+```
+mocha tests/import.js
+```
