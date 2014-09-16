@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Symplectic import</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/tests">Symplectic import</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Container -->
+    <div id="symplectic-publications-container" class="container"><!-- --></div>
+
+    <!-- Templates -->
+    <script type="text/template" id="symplectic-publications-template">
+        <% _.each(publications, function(publication) { %>
+        <div class="row">
+            <h5><%= publication.displayName %></h5>
+            <ul>
+                <% delete publication.displayName; %>
+                <% _.each(_.keys(publication), function(key) { %>
+                    <% if (publication[key]) { %>
+
+                    <li>
+                        <span class="publication-label"><%= key %></span>
+
+                        <% if (key === 'file') { %>
+                        <span class="publication-value"><a href="<%= publication[key] %>" target="_blank"><%= publication[key] %></a></span>
+                        <% } else if (key === 'date') { %>
+                        <% var date = new Date(publication[key]) %>
+                        <span class="publication-value"><%= date %></span>
+                        <% } else { %>
+                        <span class="publication-value"><%= publication[key] %></span>
+                        <% } %>
+                    </li>
+                    <% } %>
+                <% });%>
+            </ul>
+        </div>
+        <% }); %>
+    </script>
+
+    <script type="text/template" id="symplectic-loading-template">
+        <div class="row">
+            <span>Fetching publications...</span>
+        </div>
+    </script>
+
+    <script type="text/template" id="symplectic-error-template">
+        <div class="row">
+            <h5>An error occurred!</h5>
+            <span><%= error %></span>
+        </div>
+    </script>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="js/vendor/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/vendor/underscore-min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+  </body>
+</html>

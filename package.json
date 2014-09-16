@@ -23,6 +23,7 @@
   "dependencies": {
     "assert": "latest",
     "colors": "latest",
+    "express": "latest",
     "nock": "latest",
     "progress": "latest",
     "q": "latest",

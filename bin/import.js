@@ -81,11 +81,7 @@ var constructRequestOptions = function() {
     var errors = [];
 
     // Request options object
-    var opts = {
-        'detail': 'full',
-        'ever-approved': true,
-        'per-page': Constants.API['items-per-page']
-    };
+    var opts = {};
 
     if (argv.c) {
         if (argv.c.length !== 10) {

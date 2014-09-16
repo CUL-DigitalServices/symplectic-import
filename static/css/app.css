@@ -1,0 +1,34 @@
+#symplectic-publications-container {
+    margin-top: 60px;
+}
+
+#symplectic-publications-container .row {
+    margin-bottom: 30px;
+}
+
+#symplectic-publications-container ul {
+    padding: 0;
+}
+
+#symplectic-publications-container li {
+    clear: both;
+    display: block;
+}
+
+#symplectic-publications-container .publication-label,
+#symplectic-publications-container .publication-value {
+    float: left;
+    display: inline-block;
+    line-height: 1.8em;
+}
+
+#symplectic-publications-container .publication-label {
+    width: 150px;
+}
+
+#symplectic-publications-container .publication-value {
+    white-space: nowrap;
+    width: 750px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
