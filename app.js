@@ -2,7 +2,7 @@ var express = require('express');
 var http = require('http');
 var util = require('util');
 
-var API = require('./lib/api');
+var API = require('./lib/symplectic/api');
 
 /**
  * Creates a new server
@@ -57,6 +57,7 @@ var createServer = function() {
             })
 
             .fail(function(err) {
+                console.log(err);
                 return res.status(400).send(err);
             });
     });

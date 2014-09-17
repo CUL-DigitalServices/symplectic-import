@@ -22,6 +22,7 @@ $(function() {
      * @api private
      */
     var showError = function(err) {
+        console.log(err);
         renderTemplate(tplError, {'err': err});
     };
 
@@ -63,12 +64,14 @@ $(function() {
         showLoading();
 
         var opts = {
-            'timeout': 15000,
+            'timeout': 30000,
             'type': 'GET',
             'url': 'http://localhost:2000/api/publications' + window.location.search
         };
 
-        $.ajax(opts).done(showPublications).fail(showError);
+        $.ajax(opts).done(showPublications).fail(function(err) {
+            showError(err.statusText);
+        });
     };
 
     /**

@@ -13,7 +13,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/tests">Symplectic import</a>
+                <a class="navbar-brand" href="/tests">Publications from Arxiv via Symplectic import</a>
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
     <!-- Templates -->
     <script type="text/template" id="symplectic-publications-template">
         <% _.each(publications, function(publication) { %>
-        <div class="row">
+        <div class="row publication">
             <h5><%= publication.displayName %></h5>
             <ul>
                 <% delete publication.displayName; %>
@@ -37,9 +37,18 @@
 
                         <% if (key === 'file') { %>
                         <span class="publication-value"><a href="<%= publication[key] %>" target="_blank"><%= publication[key] %></a></span>
+
                         <% } else if (key === 'date') { %>
                         <% var date = new Date(publication[key]) %>
                         <span class="publication-value"><%= date %></span>
+
+                        <% } else if (key === 'correspondingAuthor') { %>
+                        <span class="publication-value">
+                            <% _.each(publication[key], function(correspondingAuthor) { %>
+                                <span class="publication-value-list-item"><%- correspondingAuthor['academicName'] %> (<a href="mailto:<%= correspondingAuthor['emailAddress'] %>"><%- correspondingAuthor['emailAddress'] %></a>) | <%- correspondingAuthor['primaryGroupDescriptor'] %></span>
+                            <% }) %>
+                        </span>
+
                         <% } else { %>
                         <span class="publication-value"><%= publication[key] %></span>
                         <% } %>
@@ -52,15 +61,17 @@
     </script>
 
     <script type="text/template" id="symplectic-loading-template">
-        <div class="row">
+        <div class="row info">
             <span>Fetching publications...</span>
         </div>
     </script>
 
     <script type="text/template" id="symplectic-error-template">
-        <div class="row">
+        <div class="row error">
             <h5>An error occurred!</h5>
-            <span><%= error %></span>
+            <% if (err) { %>
+            <span>Error: <%= err %></span>
+            <% } %>
         </div>
     </script>
 

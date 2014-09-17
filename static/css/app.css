@@ -3,7 +3,28 @@
 }
 
 #symplectic-publications-container .row {
+    padding: 15px;
+}
+
+#symplectic-publications-container .row h5 {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+#symplectic-publications-container .row.publication {
     margin-bottom: 30px;
+}
+
+#symplectic-publications-container .row.publication:nth-child(even) {
+    background-color: #F9F9F9;
+}
+
+#symplectic-publications-container .row.error {
+    background-color: #FF9966;
+}
+
+#symplectic-publications-container .row.info {
+    background-color: #CCFF99;
 }
 
 #symplectic-publications-container ul {
@@ -13,6 +34,8 @@
 #symplectic-publications-container li {
     clear: both;
     display: block;
+    overflow: auto;
+    margin-bottom: 5px;
 }
 
 #symplectic-publications-container .publication-label,
@@ -27,8 +50,11 @@
 }
 
 #symplectic-publications-container .publication-value {
-    white-space: nowrap;
-    width: 750px;
+    width: 990px;
+    min-width: 990px;
     overflow: hidden;
-    text-overflow: ellipsis;
+}
+
+#symplectic-publications-container .publication-value-list-item {
+    display: block;
 }

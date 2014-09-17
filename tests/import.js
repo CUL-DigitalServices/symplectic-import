@@ -7,8 +7,8 @@ var nock = require('nock');
 var qs = require('querystring');
 var util = require('util');
 
-var API = require('../lib/api');
-var Constants = require('../lib/constants').Constants;
+var API = require('../lib/symplectic/api');
+var Constants = require('../lib/symplectic/constants').Constants;
 
 describe('Symplectic import', function() {
 
