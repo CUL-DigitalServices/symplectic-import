@@ -7,8 +7,10 @@ var nock = require('nock');
 var qs = require('querystring');
 var util = require('util');
 
-var API = require('../lib/symplectic/api');
+var config = require('../config');
+
 var Constants = require('../lib/symplectic/constants').Constants;
+var SymplecticAPI = require('../lib/symplectic/api');
 
 describe('Symplectic import', function() {
 
@@ -18,7 +20,7 @@ describe('Symplectic import', function() {
         'detail': 'full',
         'ever-approved': true,
         'page': 1,
-        'per-page': Constants.API['items-per-page']
+        'per-page': config.symplectic['items-per-page']
     };
 
     /**
@@ -45,8 +47,8 @@ describe('Symplectic import', function() {
         }
 
         var queryString = qs.encode(_opts);
-        var scope = nock(Constants.API.URI)
-            .get(util.format('/%s?%s', Constants.API.endpoint, queryString))
+        var scope = nock(config.symplectic.uri)
+            .get(util.format('/%s?%s', config.symplectic.endpoint, queryString))
             .reply(200, getPublications);
     };
 
@@ -59,7 +61,7 @@ describe('Symplectic import', function() {
         mockRequest(opts);
 
         // Request the publications
-        API.getPublications(opts)
+        SymplecticAPI.getPublications(opts)
 
             .then(function(publications) {
                 assert.ok(publications);
@@ -90,7 +92,7 @@ describe('Symplectic import', function() {
         mockRequest(_opts);
 
         // Request the publications
-        API.getPublications(_opts)
+        SymplecticAPI.getPublications(_opts)
 
             .then(function(publications) {
                 assert.ok(publications);

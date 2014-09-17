@@ -13,6 +13,9 @@ $(function() {
      */
     var showPublications = function(publications) {
         renderTemplate(tplPublications, {'publications': publications});
+
+        // Add event listeners
+        addBinding();
     };
 
     /**
@@ -72,6 +75,57 @@ $(function() {
         $.ajax(opts).done(showPublications).fail(function(err) {
             showError(err.statusText);
         });
+    };
+
+    /**
+     * Function that triggers the creation of a ZenDesk ticket for the specified publication
+     *
+     * @param  {Event}  event   The triggered jQuery event
+     * @api private
+     */
+    var createTicket = function(event) {
+
+        var $button = $(event.currentTarget);
+
+        // Change the button UI
+        $button.addClass('disabled').find('i').removeClass('fa-ticket').addClass('fa-spinner').addClass('fa-spin');
+
+        // Fetch the publicaiton id
+        var id = $button.attr('data-value');
+
+        // Request options object
+        var opts = {
+            'type': 'POST',
+            'url': 'http://localhost:2000/api/zendesk/ticket',
+            'data': {
+                'id': id
+            }
+        };
+
+        $.ajax(opts)
+
+            .done(function() {
+
+                // Change the button UI
+                $button.removeClass('btn-info').addClass('btn-success');
+                $button.find('i').removeClass('fa-spinner').removeClass('fa-spin').addClass('fa-check');
+            })
+
+            .fail(function() {
+
+                // Change the button UI
+                $button.removeClass('btn-info').addClass('btn-danger');
+                $button.find('i').removeClass('fa-spinner').removeClass('fa-spin').addClass('fa-exclamation');
+            });
+    };
+
+    /**
+     * Add event listeners to UI components
+     */
+    var addBinding = function() {
+
+        // Create a ZenDesk ticket
+        $('.js-symplectic-create-ticket').on('click', createTicket);
     };
 
     /**
