@@ -13,7 +13,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/tests">Symplectic import</a>
+                <a class="navbar-brand" href="/tests">Publications from Arxiv via Symplectic import</a>
             </div>
         </div>
     </div>
@@ -37,9 +37,18 @@
 
                         <% if (key === 'file') { %>
                         <span class="publication-value"><a href="<%= publication[key] %>" target="_blank"><%= publication[key] %></a></span>
+
                         <% } else if (key === 'date') { %>
                         <% var date = new Date(publication[key]) %>
                         <span class="publication-value"><%= date %></span>
+
+                        <% } else if (key === 'correspondingAuthor') { %>
+                        <span class="publication-value">
+                            <% _.each(publication[key], function(correspondingAuthor) { %>
+                                <%= correspondingAuthor['academicName'] %> (<a href="mailto:<%= correspondingAuthor['emailAddress'] %>"><%= correspondingAuthor['emailAddress'] %></a>) | <%= correspondingAuthor['primaryGroupDescriptor'] %>
+                            <% }) %>
+                        </span>
+
                         <% } else { %>
                         <span class="publication-value"><%= publication[key] %></span>
                         <% } %>

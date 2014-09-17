@@ -1,0 +1,90 @@
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:api="http://www.symplectic.co.uk/publications/api">
+	<api:schema-version>4.6</api:schema-version>
+	<category scheme="http://www.symplectic.co.uk/publications/atom/feeds/" term="relationship-list" label="Relationship list"/>
+	<id>tag:elements@cambridge,4.7:/publications-api/v4.6/feeds/publications/648608/relationships</id>
+	<updated>2014-09-17T07:22:35.7221392+01:00</updated>
+	<generator uri="https://ref.cam.ac.uk/" version="4.7">Symplectic Elements</generator>
+	<icon>https://ref.cam.ac.uk:8091/publications-api/v4.6/symplectic.ico</icon>
+	<rights>This data is the property of the Organisation, and can only be used with permission.</rights>
+	<subtitle type="xhtml">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>This feed represents page
+				<a href="https://ref.cam.ac.uk:8091/publications-api/v4.6/publications/648608/relationships?detail=full">1</a> of 1 listing a total of 1 relationship results from the following search query:
+				<a href="https://ref.cam.ac.uk:8091/publications-api/v4.6/publications/648608/relationships?detail=full">https://ref.cam.ac.uk:8091/publications-api/v4.6/publications/648608/relationships?detail=full</a>
+			</p>
+		</div>
+	</subtitle>
+	<api:pagination results-count="1" items-per-page="25">
+		<api:page position="this" number="1" href="https://ref.cam.ac.uk:8091/publications-api/v4.6/publications/648608/relationships?detail=full"/>
+		<api:page position="first" number="1" href="https://ref.cam.ac.uk:8091/publications-api/v4.6/publications/648608/relationships?detail=full"/>
+		<api:page position="last" number="1" href="https://ref.cam.ac.uk:8091/publications-api/v4.6/publications/648608/relationships?detail=full"/>
+	</api:pagination>
+	<link type="application/atom+xml" rel="self" href="https://ref.cam.ac.uk:8091/publications-api/v4.6/publications/648608/relationships?detail=full"/>
+	<link type="application/atom+xml" rel="first" href="https://ref.cam.ac.uk:8091/publications-api/v4.6/publications/648608/relationships?detail=full"/>
+	<link type="application/atom+xml" rel="last" href="https://ref.cam.ac.uk:8091/publications-api/v4.6/publications/648608/relationships?detail=full"/>
+	<title>Relationships of the publication: Planck intermediate results. XXIX. All-sky dust modelling with Planck,  IRAS, and WISE observations</title>
+	<author>
+		<name>Symplectic Elements at Cambridge</name>
+	</author>
+	<entry>
+		<id>tag:elements@cambridge,4.7:/publications-api/v4.6/relationships/951168</id>
+		<category scheme="http://www.symplectic.co.uk/publications/atom/entries/" term="relationship" label="Relationship"/>
+		<updated>2014-09-10T17:23:09.947+01:00</updated>
+		<link type="application/atom+xml" rel="alternate" href="https://ref.cam.ac.uk:8091/publications-api/v4.6/relationships/951168"/>
+		<link type="application/atom+xml" rel="related" title="Object 1" href="https://ref.cam.ac.uk:8091/publications-api/v4.6/publications/648608"/>
+		<link type="application/atom+xml" rel="related" title="Object 2" href="https://ref.cam.ac.uk:8091/publications-api/v4.6/users/3357"/>
+		<title>Authored by: DOE, John</title>
+		<content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p>Involving
+					<a href="https://ref.cam.ac.uk:8091/publications-api/v4.6/users/3357">Doe, John</a>
+				</p>
+			</div>
+		</content>
+		<api:relationship id="951168" type-id="8" type="publication-user-authorship" href="https://ref.cam.ac.uk:8091/publications-api/v4.6/relationships/951168">
+			<!--Relationship type 8 means "Authored by" in this context.-->
+			<api:is-visible>true</api:is-visible>
+			<api:is-favourite>false</api:is-favourite>
+			<api:related direction="to">
+				<api:object category="user" id="3357" proprietary-id="10079395" authenticating-authority="University of Cambridge" username="VS237" last-modified-when="2014-09-10T17:23:38.123+01:00" href="https://ref.cam.ac.uk:8091/publications-api/v4.6/users/3357" created-when="2010-10-18T14:12:40.577+01:00" type-id="1" type="person">
+					<!--User type 1 is "person"-->
+					<api:ever-approved>true</api:ever-approved>
+					<api:reporting-date-1>1999-08-25</api:reporting-date-1>
+					<api:is-current-staff>true</api:is-current-staff>
+					<api:is-academic>true</api:is-academic>
+					<api:title>Dr</api:title>
+					<api:initials>J</api:initials>
+					<api:last-name>Doe</api:last-name>
+					<api:first-name>John</api:first-name>
+					<api:email-address>johndoe@ast.cam.ac.uk</api:email-address>
+					<api:primary-group-descriptor>Department of Physics</api:primary-group-descriptor>
+					<api:organisation-defined-data field-number="1" field-name="UoA"/>
+					<api:organisation-defined-data field-number="2" field-name="Birth date">1943-11-06</api:organisation-defined-data>
+					<api:organisation-defined-data field-number="3" field-name="Staff category (RAE)">Researcher</api:organisation-defined-data>
+					<api:organisation-defined-data field-number="4" field-name="Post (Trent employment category)">Senior Research Associate</api:organisation-defined-data>
+					<api:organisation-defined-data field-number="5" field-name="Position title">1.00</api:organisation-defined-data>
+					<api:organisation-defined-data field-number="6" field-name="FTE">2014-04-01</api:organisation-defined-data>
+					<api:organisation-defined-data field-number="7" field-name="Entry into Cambridge"/>
+					<api:organisation-defined-data field-number="8" field-name="Leave date"/>
+					<api:organisation-defined-data field-number="9" field-name="Contract start date"/>
+					<api:organisation-defined-data field-number="10" field-name="Contract end date"/>
+					<api:organisation-defined-data field-number="11" field-name="RAE 2008"/>
+					<api:organisation-defined-data field-number="12" field-name="Research group 1"/>
+					<api:organisation-defined-data field-number="13" field-name="Research group 2"/>
+					<api:organisation-defined-data field-number="14" field-name="Research group 3"/>
+					<api:organisation-defined-data field-number="15" field-name="Other form of Employment"/>
+					<api:organisation-defined-data field-number="16" field-name="Where from"/>
+					<api:organisation-defined-data field-number="17" field-name="Where to"/>
+					<api:organisation-defined-data field-number="18" field-name="Impact"/>
+					<api:organisation-defined-data field-number="19" field-name="Student"/>
+					<api:organisation-defined-data field-number="20" field-name="Grant income"/>
+					<api:organisation-defined-data field-number="21" field-name="HESA staff identifier">9911140158188</api:organisation-defined-data>
+					<api:organisation-defined-data field-number="22" field-name="Full name">John Doe</api:organisation-defined-data>
+					<api:organisation-defined-data field-number="23" field-name="Previous name"/>
+					<api:fields/>
+					<api:relationships href="https://ref.cam.ac.uk:8091/publications-api/v4.6/users/3357/relationships"/>
+				</api:object>
+			</api:related>
+		</api:relationship>
+	</entry>
+</feed>
