@@ -12,12 +12,13 @@ Use the interface
 ```
 Usage: node app.js
 
-Go to: http://localhost:2000?g={0-9}&c={yyyy-mm-dd}
+Go to: http://localhost:2000?g={0-9}&c={yyyy-mm-dd}&t="{a-z}"
+ e.g.: http://localhost:2000?g=180&c=2014-09-01&t=journal article
 
 Parameters:
-  c  The insertion start date of the publications (e.g. 2014-09-01')
-  g  The group where the publications belong to (e.g. 432)
-  t  The content type of the resources to fetch (e.g. "journal article, book")
+  c  The insertion start date of the publications (e.g. 2014-09-01'). Optional
+  g  The group where the publications belong to (e.g. 432). Optional
+  t  The content type of the resources to fetch (e.g. "journal article, book"). Optional
 ```
 
 Run the script

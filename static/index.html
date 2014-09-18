@@ -24,48 +24,54 @@
 
     <!-- Templates -->
     <script type="text/template" id="symplectic-publications-template">
-        <% _.each(publications, function(publication) { %>
-        <div class="row publication">
-            <h5><%= publication.displayName %></h5>
-            <ul>
-                <%
-                    var id = publication.id;
+        <% if (publications.length) { %>
+            <% _.each(publications, function(publication) { %>
+            <div class="row publication">
+                <h5><%= publication.displayName %></h5>
+                <ul>
+                    <%
+                        var id = publication.id;
 
-                    delete publication.displayName;
-                    delete publication.id;
-                %>
-                <% _.each(_.keys(publication), function(key) { %>
-                    <% if (publication[key]) { %>
+                        delete publication.displayName;
+                        delete publication.id;
+                    %>
+                    <% _.each(_.keys(publication), function(key) { %>
+                        <% if (publication[key]) { %>
 
-                    <li>
-                        <span class="publication-label"><%= key %></span>
+                        <li>
+                            <span class="publication-label"><%= key %></span>
 
-                        <% if (key === 'file') { %>
-                        <span class="publication-value"><a href="<%= publication[key] %>" target="_blank"><%= publication[key] %></a></span>
+                            <% if (key === 'file') { %>
+                            <span class="publication-value"><a href="<%= publication[key] %>" target="_blank"><%= publication[key] %></a></span>
 
-                        <% } else if (key === 'date') { %>
-                        <% var date = new Date(publication[key]) %>
-                        <span class="publication-value"><%= date %></span>
+                            <% } else if (key === 'date') { %>
+                            <% var date = new Date(publication[key]) %>
+                            <span class="publication-value"><%= date %></span>
 
-                        <% } else if (key === 'correspondingAuthor') { %>
-                        <span class="publication-value">
-                            <% _.each(publication[key], function(correspondingAuthor) { %>
-                                <span class="publication-value-list-item"><%- correspondingAuthor['academicName'] %> (<a href="mailto:<%= correspondingAuthor['emailAddress'] %>"><%- correspondingAuthor['emailAddress'] %></a>) | <%- correspondingAuthor['primaryGroupDescriptor'] %></span>
-                            <% }) %>
-                        </span>
+                            <% } else if (key === 'correspondingAuthor') { %>
+                            <span class="publication-value">
+                                <% _.each(publication[key], function(correspondingAuthor) { %>
+                                    <span class="publication-value-list-item"><%- correspondingAuthor['academicName'] %> (<a href="mailto:<%= correspondingAuthor['emailAddress'] %>"><%- correspondingAuthor['emailAddress'] %></a>) | <%- correspondingAuthor['primaryGroupDescriptor'] %></span>
+                                <% }) %>
+                            </span>
 
-                        <% } else { %>
-                        <span class="publication-value"><%= publication[key] %></span>
+                            <% } else { %>
+                            <span class="publication-value"><%= publication[key] %></span>
+                            <% } %>
+                        </li>
                         <% } %>
-                    </li>
-                    <% } %>
-                <% });%>
-            </ul>
-            <div>
-                <button class="btn btn-info pull-right js-symplectic-create-ticket" data-value="<%= id %>"><i class="fa fa-ticket"></i> Create ZenDesk ticket</button>
+                    <% });%>
+                </ul>
+                <div>
+                    <button class="btn btn-info pull-right js-symplectic-create-ticket" data-value="<%= id %>"><i class="fa fa-ticket"></i> Create ZenDesk ticket</button>
+                </div>
             </div>
-        </div>
-        <% }); %>
+            <% }); %>
+        <% } else { %>
+            <div class="alert alert-warning" role="alert">
+                <span>No publications found</span>
+            </div>
+        <% } %>
     </script>
 
     <script type="text/template" id="symplectic-loading-template">
