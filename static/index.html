@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="css/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="css/vendor/font-awesome.min.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
   </head>
   <body>
@@ -18,7 +19,6 @@
         </div>
     </div>
 
-
     <!-- Container -->
     <div id="symplectic-publications-container" class="container"><!-- --></div>
 
@@ -28,7 +28,12 @@
         <div class="row publication">
             <h5><%= publication.displayName %></h5>
             <ul>
-                <% delete publication.displayName; %>
+                <%
+                    var id = publication.id;
+
+                    delete publication.displayName;
+                    delete publication.id;
+                %>
                 <% _.each(_.keys(publication), function(key) { %>
                     <% if (publication[key]) { %>
 
@@ -56,19 +61,22 @@
                     <% } %>
                 <% });%>
             </ul>
+            <div>
+                <button class="btn btn-info pull-right js-symplectic-create-ticket" data-value="<%= id %>"><i class="fa fa-ticket"></i> Create ZenDesk ticket</button>
+            </div>
         </div>
         <% }); %>
     </script>
 
     <script type="text/template" id="symplectic-loading-template">
-        <div class="row info">
-            <span>Fetching publications...</span>
+        <div class="alert alert-info" role="alert">
+            <span><i class="fa fa-spinner fa-spin"></i> Fetching publications...</span>
         </div>
     </script>
 
     <script type="text/template" id="symplectic-error-template">
-        <div class="row error">
-            <h5>An error occurred!</h5>
+        <div class="alert alert-danger" role="alert">
+            <h5><i class="fa fa-exclamation"></i> An error occurred!</h5>
             <% if (err) { %>
             <span>Error: <%= err %></span>
             <% } %>

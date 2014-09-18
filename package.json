@@ -22,9 +22,11 @@
   },
   "dependencies": {
     "assert": "latest",
+    "body-parser": "latest",
     "colors": "latest",
     "express": "latest",
     "nock": "latest",
+    "node-zendesk": "latest",
     "progress": "latest",
     "q": "latest",
     "querystring": "latest",

@@ -8,8 +8,9 @@ var q = require('q');
 var util = require('util');
 var yargs = require('yargs');
 
-var API = require('../lib/symplectic/api');
 var Constants = require('../lib/symplectic/constants').Constants;
+var SymplecticAPI = require('../lib/symplectic/api');
+var ZenDeskAPI = require('../lib/zendesk/api');
 
 var progressBar = null;
 
@@ -56,7 +57,7 @@ var init = function() {
 
     // Perform the API request
     var opts = constructRequestOptions();
-    API.getPublications(opts)
+    SymplecticAPI.getPublications(opts)
 
         // Progress handler
         .progress(progressHandler)
