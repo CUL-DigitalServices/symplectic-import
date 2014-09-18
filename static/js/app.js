@@ -69,7 +69,7 @@ $(function() {
         var opts = {
             'timeout': 30000,
             'type': 'GET',
-            'url': 'http://localhost:2000/api/publications' + window.location.search
+            'url': '/api/publications' + window.location.search
         };
 
         $.ajax(opts).done(showPublications).fail(function(err) {
@@ -96,7 +96,7 @@ $(function() {
         // Request options object
         var opts = {
             'type': 'POST',
-            'url': 'http://localhost:2000/api/zendesk/ticket',
+            'url': '/api/zendesk/ticket',
             'data': {
                 'id': id
             }

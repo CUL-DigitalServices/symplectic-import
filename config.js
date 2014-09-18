@@ -8,7 +8,7 @@ var config = module.exports = {};
  */
 config.app = {
     'host': 'localhost',
-    'port': 2000,
+    'port': (process.env.PORT || 2000),
 };
 
 /**
