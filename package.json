@@ -1,7 +1,8 @@
 {
   "name": "symplectic-import",
-  "description": "A Symplectic import script",
   "version": "0.1.0",
+  "description": "A Symplectic import script",
+  "main": "app.js",
   "homepage": "https://github.com/Coenego/symplectic-import",
   "author": "Mathieu Decoene <md623@cam.ac.uk>",
   "keywords": [
@@ -39,9 +40,10 @@
     "mocha": "latest"
   },
   "engines": {
-    "node": ">=0.10"
+    "node": "0.10.x"
   },
   "scripts": {
+    "start": "node app.js",
     "test": "npm run test-node",
     "test-node": "mocha ./tests/import.js"
   }
