@@ -24,7 +24,7 @@ var createServer = function() {
     app.use('/fonts', express.static(__dirname + '/static/fonts'));
 
     // Setup the HTTP server
-    var httpServer = http.createServer(app).listen(config.app.port, config.app.host);
+    var httpServer = http.createServer(app).listen(config.app.port);
 
     // Return an error if spinning up the server failed
     httpServer.once('error', function(err) {
