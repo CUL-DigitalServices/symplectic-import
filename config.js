@@ -32,7 +32,7 @@ config.symplectic = {
  * @param  {String}     uri         The ZenDesk URI
  */
 config.zendesk = {
-    'username': '',
-    'token': '',
-    'uri': ''
+    'username': 'oszkar@caret.cam.ac.uk',
+    'token': 'vTznSUw6vtK397CTmPyot8YVPnfr6xnS5d9m4JS2',
+    'uri': 'https://caret.zendesk.com/api/v2'
 };
