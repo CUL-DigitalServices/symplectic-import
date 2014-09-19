@@ -11,77 +11,213 @@
   <body>
 
     <!-- Navbar -->
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/tests">Publications from Arxiv via Symplectic import</a>
+                <a class="navbar-brand" href="#">Publications import</a>
             </div>
+            <form id="js-symplectic-publications-form" class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" id="js-symplectic-publications-form-author-ids" name="ids" class="form-control" value="" placeholder="ArXiv author id">
+                </div>
+                <div class="form-group">
+                    <div class="btn-group">
+                        <input type="hidden" id="js-symplectic-publications-form-groups" value="astro_physics">
+                        <button type="button" id="js-symplectic-publications-form-label" class="btn btn-default">Astrophysics</button>
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <ul id="js-symplectic-publications-form-groups-dropdown" class="dropdown-menu" role="menu">
+                            <li><a href="#" data-group="astro_physics">Astrophysics</a></li>
+                            <li><a href="#" data-group="mathematics">Mathematics</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="js-symplectic-publications-form-created-since" name="created-since" class="form-control" maxlength="10" placeholder="e.g. 2014-01-01">
+                </div>
+                <button type="submit" id="js-symplectic-get-publications" class="btn btn-primary">Submit</button>
+            </form>
         </div>
-    </div>
+    </nav>
 
     <!-- Container -->
     <div id="symplectic-publications-container" class="container"><!-- --></div>
 
     <!-- Templates -->
     <script type="text/template" id="symplectic-publications-template">
-        <% if (publications.length) { %>
-            <% _.each(publications, function(publication) { %>
-            <div class="row publication">
-                <h5><%= publication.displayName %></h5>
-                <ul>
-                    <%
-                        var id = publication.id;
 
-                        delete publication.displayName;
-                        delete publication.id;
-                    %>
-                    <% _.each(_.keys(publication), function(key) { %>
-                        <% if (publication[key]) { %>
+        <% if (results) { %>
 
-                        <li>
-                            <span class="publication-label"><%= key %></span>
+            <!--// Stats //-->
+            <% if (results.stats) { %>
+            <div id="symplectic-publications-stats" class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th></th>
+                        <th>ArXiv</th>
+                        <th>Symplectic</th>
+                    </tr>
+                    <tr class="<% if (results.stats.matching === results.stats.numRecords.arxiv) { %>success<% } else { %>danger<% } %>">
+                        <td class="property">Matching</td>
+                        <td class="value"><%= results.stats.numRecords.arxiv %></td>
+                        <td class="value"><%= results.stats.matching %></td>
+                    </tr>
+                </table>
+            </div>
+            <% } %>
 
-                            <% if (key === 'file') { %>
-                            <span class="publication-value"><a href="<%= publication[key] %>" target="_blank"><%= publication[key] %></a></span>
+            <!--// Matching rows //-->
+            <% if (results.matching.length) { %>
+            <h4><%= results.matching.length %> matching records</h4>
+            <div class="row">
+                <div class="col-md-12">
+                <% if (results.matching.length) { %>
 
-                            <% } else if (key === 'date') { %>
-                            <% var date = new Date(publication[key]) %>
-                            <span class="publication-value"><%= date %></span>
+                    <!--// Columns //-->
+                    <% _.each(results.matching, function(row) { %>
 
-                            <% } else if (key === 'correspondingAuthor') { %>
-                            <span class="publication-value">
-                                <% _.each(publication[key], function(correspondingAuthor) { %>
-                                    <span class="publication-value-list-item"><%- correspondingAuthor['academicName'] %> (<a href="mailto:<%= correspondingAuthor['emailAddress'] %>"><%- correspondingAuthor['emailAddress'] %></a>) | <%- correspondingAuthor['primaryGroupDescriptor'] %></span>
-                                <% }) %>
-                            </span>
+                        <!--// Publications //-->
+                        <div class="row publication">
 
-                            <% } else { %>
-                            <span class="publication-value"><%= publication[key] %></span>
-                            <% } %>
-                        </li>
-                        <% } %>
-                    <% });%>
-                </ul>
-                <div>
-                    <button class="btn btn-info pull-right js-symplectic-create-ticket" data-value="<%= id %>"><i class="fa fa-ticket"></i> Create ZenDesk ticket</button>
+                            <!--// Publication //-->
+                            <% _.each(row.publications, function(value, key) { %>
+                                <% var publication = row.publications[key]; %>
+
+                                <div class="col col-md-6">
+                                    <h5><%= publication.displayName %></h5>
+                                    <ul>
+                                        <%
+                                            var id = publication.id;
+                                            delete publication.id;
+
+                                            if (publication.displayName) {
+                                                delete publication.displayName;
+                                            }
+                                        %>
+                                        <% _.each(_.keys(publication), function(key) { %>
+                                            <% if (publication[key]) { %>
+                                            <li>
+                                                <span class="publication-label"><%= key %></span>
+
+                                                <% if (key === 'file') { %>
+                                                <span class="publication-value"><a href="<%= publication[key] %>" target="_blank"><%= publication[key] %></a></span>
+
+                                                <% } else if (key === 'date') { %>
+                                                <% var date = new Date(publication[key]) %>
+                                                <span class="publication-value"><%= date %></span>
+
+                                                <% } else if (key === 'correspondingAuthor') { %>
+                                                <span class="publication-value">
+                                                    <% _.each(publication[key], function(correspondingAuthor) { %>
+                                                        <span class="publication-value-list-item"><a href="mailto:<%= correspondingAuthor['emailAddress'] %>"><%- correspondingAuthor['academicName'] %></a> | <%- correspondingAuthor['primaryGroupDescriptor'] %></span>
+                                                    <% }) %>
+                                                </span>
+
+                                                <% } else if (key === 'authors') { %>
+                                                <span class="publication-value">
+                                                    <%= publication[key].join(', ') %>
+                                                </span>
+
+                                                <% } else { %>
+                                                <span class="publication-value"><%= publication[key] %></span>
+                                                <% } %>
+                                            </li>
+                                            <% } %>
+                                        <% });%>
+                                    </ul>
+
+                                    <!--// Only display the ZenDesk button for Symplectic publications //-->
+                                    <% if (key === 'symplectic') { %>
+                                    <div>
+                                        <button class="btn btn-info pull-right js-symplectic-create-ticket" data-value="<%= id %>"><i class="fa fa-ticket"></i> Create ZenDesk ticket</button>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            <% }); %>
+
+                        </div>
+                    <% }); %>
+                <% } %>
                 </div>
             </div>
-            <% }); %>
+            <% } %>
+
+            <!--// Unmatching rows //-->
+            <% if (results.unmatching.length) { %>
+            <hr/>
+            <h4><%= results.unmatching.length %> records without match</h4>
+            <div class="row">
+                <div class="col-md-16">
+                <% if (results.unmatching.length) { %>
+
+                    <!--// Columns //-->
+                    <% _.each(results.unmatching, function(publication) { %>
+
+                        <!--// Publications //-->
+                        <div class="row publication">
+                            <h5><%= publication.displayName %></h5>
+                            <ul>
+                                <%
+                                    var id = publication.id;
+
+                                    delete publication.displayName;
+                                    delete publication.id;
+                                %>
+                                <% _.each(_.keys(publication), function(key) { %>
+                                    <% if (publication[key]) { %>
+
+                                    <li>
+                                        <span class="publication-label"><%= key %></span>
+
+                                        <% if (key === 'file') { %>
+                                        <span class="publication-value"><a href="<%= publication[key] %>" target="_blank"><%= publication[key] %></a></span>
+
+                                        <% } else if (key === 'date') { %>
+                                        <% var date = new Date(publication[key]) %>
+                                        <span class="publication-value"><%= date %></span>
+
+                                        <% } else if (key === 'correspondingAuthor') { %>
+                                        <span class="publication-value">
+                                            <% _.each(publication[key], function(correspondingAuthor) { %>
+                                                <span class="publication-value-list-item"><a href="mailto:<%= correspondingAuthor['emailAddress'] %>"><%- correspondingAuthor['academicName'] %></a> | <%- correspondingAuthor['primaryGroupDescriptor'] %></span>
+                                            <% }) %>
+                                        </span>
+
+                                        <% } else if (key === 'authors') { %>
+                                        <span class="publication-value">
+                                            <%= publication[key].join(', ') %>
+                                        </span>
+
+                                        <% } else { %>
+                                        <span class="publication-value"><%= publication[key] %></span>
+                                        <% } %>
+                                    </li>
+                                    <% } %>
+                                <% });%>
+                            </ul>
+                        </div>
+                    <% }); %>
+                <% } %>
+                </div>
+            </div>
+            <% } %>
+
         <% } else { %>
             <div class="alert alert-warning" role="alert">
-                <span>No publications found</span>
+                <span>No ArXiv records found</span>
             </div>
         <% } %>
     </script>
 
     <script type="text/template" id="symplectic-loading-template">
-        <div class="alert alert-info" role="alert">
-            <span><i class="fa fa-spinner fa-spin"></i> Fetching publications...</span>
+        <div id="symplectic-loading" class="alert alert-info" role="alert">
+            <span><i class="fa fa-spinner fa-spin"></i> <span class="caption">Fetching publications...</span</span>
         </div>
     </script>
 
     <script type="text/template" id="symplectic-error-template">
-        <div class="alert alert-danger" role="alert">
+        <div id="symplectic-error" class="alert alert-danger" role="alert">
             <h5><i class="fa fa-exclamation"></i> An error occurred!</h5>
             <% if (err) { %>
             <span>Error: <%= err %></span>
@@ -90,8 +226,10 @@
     </script>
 
     <!-- Scripts -->
+    <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="js/vendor/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/vendor/underscore-min.js"></script>
+    <script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
   </body>
 </html>

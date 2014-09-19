@@ -6,24 +6,67 @@
   font-style: normal;
 }
 
-#symplectic-publications-container {
+/* Loading */
+#symplectic-loading .api {
+    text-transform: capitalize;
+}
+
+/* Form */
+#symplectic-publications-form {
     margin-top: 60px;
 }
 
+/* Stats */
+#symplectic-publications-stats {
+    margin-bottom: 40px;
+}
+
+#symplectic-publications-stats th, td {
+    text-align: center;
+}
+
+#symplectic-publications-stats td.property {
+    width: 10%;
+    text-align: left;
+    font-weight: bold;
+}
+
+#symplectic-publications-stats td.value {
+    width: 45%;
+}
+
+/* Publications */
 #symplectic-publications-container .row {
-    padding: 15px;
+    padding: 10px;
+}
+
+#symplectic-publications-container .row h4.api-name {
+    text-transform: capitalize;
 }
 
 #symplectic-publications-container .row h5 {
     margin-bottom: 15px;
     font-size: 16px;
+    line-height: 1.4em;
+}
+
+#symplectic-publications-container .col {
+    padding: 0;
+}
+
+#symplectic-publications-container .col:nth-child(odd) .row {
+    margin-left: 0;
+}
+
+#symplectic-publications-container .col:nth-child(even) .row {
+    margin-right: 0;
 }
 
 #symplectic-publications-container .row.publication {
     margin-bottom: 30px;
 }
 
-#symplectic-publications-container .row.publication:nth-child(even) {
+#symplectic-publications-container .row.publication:nth-child(odd) {
     background-color: #F9F9F9;
 }
 
@@ -50,9 +93,11 @@
 }
 
 #symplectic-publications-container .publication-value {
-    width: 990px;
-    min-width: 990px;
+    width: 360px;
+    min-width: 360px;
     overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 #symplectic-publications-container .publication-value-list-item {
