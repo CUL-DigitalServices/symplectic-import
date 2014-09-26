@@ -1,5 +1,8 @@
 $(function() {
 
+    // Cache the socket connection
+    var socket = null;
+
     // Cache the rendered templates
     var tplPublications = null;
     var tplLoading = null;
@@ -8,14 +11,41 @@ $(function() {
     /**
      * Function that shows the publications
      *
-     * @param  {Publication[]}  publications    A collection of publications
+     * @param  {Object}     results     Object containing the results per api
      * @api private
      */
-    var showPublications = function(publications) {
-        renderTemplate(tplPublications, {'publications': publications});
+    var showPublications = function(results) {
 
-        // Add event listeners
-        addBinding();
+        // Render the publications template
+        renderTemplate(tplPublications, {'results': results});
+
+        // Add a click handler to the ZenDesk button
+        $('.js-symplectic-create-ticket').on('click', createTicket);
+    };
+
+    /**
+     * Function that displays the progress
+     *
+     * @param  {Object}     progress    Object containing the progress information
+     * @api private
+     */
+    var progressHandler = function(progress) {
+        var $loading = $('#symplectic-loading');
+        var $caption = $($loading).find('.caption');
+        var api = _.keys(progress)[0];
+        $($caption).html('Fetching publications from <strong class="api">' + api + '</strong> (' + progress[api]['current'] + '/' + progress[api]['total'] + ')');
+    };
+
+    /**
+     * Function that displays the loading
+     *
+     * @api private
+     */
+    var showLoading = function() {
+        renderTemplate(tplLoading);
+        var $loading = $('#symplectic-loading');
+        var $caption = $($loading).find('.caption');
+        $($caption).html('Fetching publications...');
     };
 
     /**
@@ -27,15 +57,6 @@ $(function() {
     var showError = function(err) {
         console.log(err);
         renderTemplate(tplError, {'err': err});
-    };
-
-    /**
-     * Function that shows the loading message
-     *
-     * @api private
-     */
-    var showLoading = function() {
-        renderTemplate(tplLoading);
     };
 
     /**
@@ -60,21 +81,43 @@ $(function() {
 
     /**
      * Function that requests the publications
+     *
+     * @param  {Event}  event   The triggered jQuery event
+     * @api private
      */
-    var requestPublications = function() {
+    var requestPublications = function(event) {
+
+        // Prevent the form from being submitted
+        event.preventDefault();
 
         // Render the template
         showLoading();
 
+        // Create a message object
         var opts = {
-            'timeout': 30000,
-            'type': 'GET',
-            'url': '/api/publications' + window.location.search
-        };
+            'author-ids': $('#js-symplectic-publications-form-author-ids').val(),
+            'created-since': $('#js-symplectic-publications-form-created-since').val(),
+            'groups': $('#js-symplectic-publications-form-groups').val()
+        }
 
-        $.ajax(opts).done(showPublications).fail(function(err) {
-            showError(err.statusText);
-        });
+        // Send a socket message
+        socketConnection.emit('PUB_GET_PUBLICATIONS', opts);
+    };
+
+    /**
+     * Change the dropdown value
+     *
+     * @param  {Event}  event   The triggered jQuery event
+     * @api private
+     */
+    var onDropDownChange = function(event) {
+        event.preventDefault();
+
+        var group = $(event.currentTarget).attr('data-group');
+        var label = $(event.currentTarget).text();
+
+        $('#js-symplectic-publications-form-groups').val(group);
+        $('#js-symplectic-publications-form-label').text(label);
     };
 
     /**
@@ -120,12 +163,35 @@ $(function() {
     };
 
     /**
-     * Add event listeners to UI components
+     * Add event listeners to UI components=
      */
     var addBinding = function() {
 
         // Create a ZenDesk ticket
         $('.js-symplectic-create-ticket').on('click', createTicket);
+
+        // Fetch the publications
+        $('#js-symplectic-publications-form').on('submit', requestPublications);
+
+        // On dropdown change
+        $('#js-symplectic-publications-form-groups-dropdown').find('li a').on('click', onDropDownChange);
+    };
+
+    /**
+     * Set up a connection with the socket server
+     */
+    var initSockets = function() {
+
+        // Connect with the socket server
+        socketConnection = io.connect(window.location.host);
+
+        // Listen to default socket events
+        socketConnection.on('disconnect', showError);
+
+        // Listen to custom events
+        socketConnection.on('PUB_ERROR', showError);
+        socketConnection.on('PUB_GET_PUBLICATIONS', showPublications);
+        socketConnection.on('PUB_GET_PUBLICATIONS_PROGRESS', progressHandler);
     };
 
     /**
@@ -135,11 +201,14 @@ $(function() {
      */
     var init = function() {
 
+        // Connect with the socket server
+        initSockets();
+
+        // Bind event listeners to UI components
+        addBinding();
+
         // Preload the templates
         loadTemplates();
-
-        // Request the publications
-        requestPublications();
     };
 
     init();

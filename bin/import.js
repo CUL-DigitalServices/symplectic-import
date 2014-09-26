@@ -8,8 +8,8 @@ var q = require('q');
 var util = require('util');
 var yargs = require('yargs');
 
-var Constants = require('../lib/symplectic/constants').Constants;
-var SymplecticAPI = require('../lib/symplectic/api');
+var Constants = require('../lib/search/api.symplectic/constants').Constants;
+var SymplecticAPI = require('../lib/search/api').Symplectic;
 var ZenDeskAPI = require('../lib/zendesk/api');
 
 var progressBar = null;

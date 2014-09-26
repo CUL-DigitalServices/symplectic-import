@@ -24,7 +24,9 @@
   "dependencies": {
     "assert": "latest",
     "body-parser": "latest",
+    "bunyan": "latest",
     "colors": "latest",
+    "connect-timeout": "latest",
     "express": "latest",
     "nock": "latest",
     "node-zendesk": "latest",
@@ -32,6 +34,7 @@
     "q": "latest",
     "querystring": "latest",
     "request": "latest",
+    "socket.io": "latest",
     "underscore": "latest",
     "xml2js": "latest",
     "yargs": "latest"

@@ -14,6 +14,17 @@ config.app = {
 /**
  * `config.symplectic`
  *
+ * @param  {String}     uri                 The Arxiv publications endpoint
+ * @param  {String}     items-per-page      The number of items per page
+ */
+config.arxiv = {
+    'uri': 'http://export.arxiv.org/api/query',
+    'items-per-page': 25
+};
+
+/**
+ * `config.symplectic`
+ *
  * @param  {String}     uri                 The Symplectic publications endpoint
  * @param  {String}     endpoint            The Symplectic publications API URI
  * @param  {String}     items-per-page      The number of items per page
