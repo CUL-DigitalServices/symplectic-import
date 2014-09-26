@@ -8,7 +8,18 @@ var config = module.exports = {};
  */
 config.app = {
     'host': 'localhost',
-    'port': 2000,
+    'port': (process.env.PORT || 2000),
+};
+
+/**
+ * `config.symplectic`
+ *
+ * @param  {String}     uri                 The Arxiv publications endpoint
+ * @param  {String}     items-per-page      The number of items per page
+ */
+config.arxiv = {
+    'uri': 'http://export.arxiv.org/api/query',
+    'items-per-page': 25
 };
 
 /**
