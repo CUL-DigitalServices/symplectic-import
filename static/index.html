@@ -129,8 +129,9 @@
 
                                     <!--// Only display the ZenDesk button for Symplectic publications //-->
                                     <% if (key === 'symplectic') { %>
-                                    <div>
+                                    <div class="buttons">
                                         <button class="btn btn-info pull-right js-symplectic-create-ticket" data-value="<%= id %>"><i class="fa fa-ticket"></i> Create ZenDesk ticket</button>
+                                        <button class="btn btn-success pull-right disabled" style="margin-right: 5px;">Score: <%= row.score %>/2</button>
                                     </div>
                                     <% } %>
                                 </div>
